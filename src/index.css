@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #080808;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #080808;
+    color: #f5f4f0;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Remove default root container constraints from template */
+  #root {
+    width: 100%;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: left;
+    display: block;
+    min-height: 100vh;
+  }
+
+  /* Architectural custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #262626;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #444444;
+  }
+}
+
+@layer utilities {
+  /* Architectural drafting grid background */
+  .bg-cad-grid {
+    background-size: 60px 60px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  .bg-cad-dots {
+    background-size: 30px 30px;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  }
+
+  /* Sophisticated architectural underline animation */
+  .hover-underline-arch {
+    position: relative;
+    display: inline-block;
+  }
+  .hover-underline-arch::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hover-underline-arch:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+  /* Film strip perforations */
+  .film-strip-edge {
+    background-image: radial-gradient(circle, #080808 30%, transparent 35%);
+    background-size: 24px 24px;
+    background-position: 0 0;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
