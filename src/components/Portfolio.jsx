@@ -173,13 +173,13 @@ export default function Portfolio({ setCursorState }) {
       {/* ============================================================== */}
       <div
         ref={creativeBreakRef}
-        className="relative w-full bg-[#080808] text-[#f5f4f0] py-32 md:py-48 px-6 md:px-12 lg:px-20 select-none overflow-hidden border-t border-white/10"
+        className="relative w-full bg-[#080808] text-[#f5f4f0] pt-12 md:pt-16 pb-6 md:pb-8 px-6 md:px-12 lg:px-20 select-none overflow-hidden border-t border-white/10"
       >
         {/* Subtle CAD Drafting Grid */}
         <div className="absolute inset-0 bg-cad-grid opacity-20 pointer-events-none" />
 
-        <div className="relative max-w-[1600px] mx-auto flex flex-col justify-center min-h-[40vh] z-10">
-          <div className="font-mono text-xs text-white/50 tracking-widest uppercase mb-8 flex items-center gap-3">
+        <div className="relative max-w-[1600px] mx-auto flex flex-col justify-center z-10">
+          <div className="font-mono text-xs text-white/50 tracking-widest uppercase mb-6 flex items-center gap-3">
             <span className="w-2 h-2 bg-white" />
             <span>CREATIVE PHILOSOPHY // 03MD</span>
           </div>
@@ -207,7 +207,7 @@ export default function Portfolio({ setCursorState }) {
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/15 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 font-mono text-xs text-white/60 uppercase">
+          <div className="mt-8 pt-6 border-t border-white/15 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 font-mono text-xs text-white/60 uppercase">
             <span>3MD STUDIO ARCHITECTURAL VISUALIZATION</span>
             <span>DUBAI · ABU DHABI · INTERNATIONAL</span>
           </div>

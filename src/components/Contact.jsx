@@ -40,7 +40,7 @@ export default function Contact({ setCursorState }) {
   return (
     <section
       id="contact"
-      className="relative w-full bg-[#f5f4f0] text-[#0a0a0a] py-24 md:py-36 px-6 md:px-12 lg:px-20 border-t border-black/10 select-none overflow-hidden"
+      className="relative w-full bg-[#f5f4f0] text-[#0a0a0a] pt-8 md:pt-10 pb-8 md:pb-12 px-6 md:px-12 lg:px-20 border-t border-black/10 select-none overflow-hidden"
     >
       {/* Background CAD Grid on Off-White */}
       <div
@@ -54,13 +54,13 @@ export default function Contact({ setCursorState }) {
 
       <div className="relative max-w-[1600px] mx-auto z-10">
         {/* Small Label */}
-        <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-black/60 uppercase mb-6">
+        <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-black/60 uppercase mb-4">
           <span className="w-2 h-2 bg-black rotate-45" />
           <span className="font-bold text-black">04 / HAVE SOMETHING IN MIND?</span>
         </div>
 
         {/* Massive Editorial Title */}
-        <h2 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase text-black leading-[0.92] max-w-5xl mb-8">
+        <h2 className="font-display font-black text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase text-black leading-[0.92] max-w-5xl mb-5">
           LET’S CREATE
           <br />
           WHAT PEOPLE
@@ -69,13 +69,13 @@ export default function Contact({ setCursorState }) {
         </h2>
 
         {/* Copy */}
-        <p className="font-sans text-lg sm:text-xl md:text-2xl text-black/75 font-light leading-relaxed max-w-2xl mb-16 border-l-2 border-black/25 pl-4">
+        <p className="font-sans text-lg sm:text-xl md:text-2xl text-black/75 font-light leading-relaxed max-w-2xl mb-8 md:mb-10 border-l-2 border-black/25 pl-4">
           “Architecture, visualization, animation or immersive experiences — tell us what you’re
           building.”
         </p>
 
         {/* Integrated Typography-First Contact Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 pt-8 border-t border-black/15">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pt-6 border-t border-black/15">
           {/* Left: Contact Info & Coordinates */}
           <div className="lg:col-span-5 flex flex-col justify-between space-y-12">
             <div className="space-y-8 font-mono text-xs">
@@ -116,9 +116,6 @@ export default function Contact({ setCursorState }) {
                   <br />
                   Dubai, United Arab Emirates
                 </p>
-                <div className="font-mono text-[10px] text-black/45 mt-1 font-semibold">
-                  GPS: 25.0443° N, 55.1892° E
-                </div>
               </div>
 
               <div>

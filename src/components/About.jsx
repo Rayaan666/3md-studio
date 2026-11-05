@@ -42,8 +42,6 @@ export default function About({ setCursorState }) {
           </div>
 
           <div className="flex items-center gap-4 font-mono text-[11px] text-black/60 tracking-wider uppercase">
-            <span>25.2048° N, 55.2708° E</span>
-            <span className="text-black/25">·</span>
             <span className="text-black font-semibold">DUBAI, UAE</span>
           </div>
         </div>

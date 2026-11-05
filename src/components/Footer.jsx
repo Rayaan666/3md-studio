@@ -14,7 +14,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative w-full bg-[#050505] text-[#f5f4f0] border-t border-white/10 pt-16 pb-12 px-6 md:px-12 lg:px-20 select-none">
+    <footer className="relative w-full bg-[#050505] text-[#f5f4f0] border-t border-white/10 pt-8 md:pt-10 pb-10 px-6 md:px-12 lg:px-20 select-none">
       <div className="max-w-[1600px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-white/10">
           {/* LEFT: 3MD Studio Logo & Identity */}
