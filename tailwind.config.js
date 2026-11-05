@@ -18,9 +18,10 @@ export default {
         accentLine: "#404040",
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
-        mono: ['"Space Grotesk"', 'monospace'],
-        sans: ['Inter', 'sans-serif'],
+        display: ['"Advent Pro"', '"advent_pro"', 'sans-serif'],
+        mono: ['"Advent Pro"', '"advent_pro"', 'monospace'],
+        sans: ['"Advent Pro"', '"advent_pro"', 'sans-serif'],
+        advent: ['"Advent Pro"', '"advent_pro"', 'sans-serif'],
       },
       letterSpacing: {
         tighter: '-0.05em',

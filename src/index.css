@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Advent Pro';
+  src: url('/font/Advent_Pro/AdventPro-VariableFont_wdth,wght.ttf') format('truetype-variations'),
+       url('/font/Advent_Pro/AdventPro-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Advent Pro';
+  src: url('/font/Advent_Pro/AdventPro-Italic-VariableFont_wdth,wght.ttf') format('truetype-variations'),
+       url('/font/Advent_Pro/AdventPro-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'advent_pro';
+  src: url('/font/Advent_Pro/AdventPro-VariableFont_wdth,wght.ttf') format('truetype-variations'),
+       url('/font/Advent_Pro/AdventPro-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'advent_pro';
+  src: url('/font/Advent_Pro/AdventPro-Italic-VariableFont_wdth,wght.ttf') format('truetype-variations'),
+       url('/font/Advent_Pro/AdventPro-Italic-VariableFont_wdth,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     color-scheme: dark;
@@ -10,6 +46,7 @@
   html {
     scroll-behavior: smooth;
     background-color: #080808;
+    font-family: 'Advent Pro', 'advent_pro', sans-serif;
   }
 
   body {
@@ -17,7 +54,7 @@
     padding: 0;
     background-color: #080808;
     color: #f5f4f0;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Advent Pro', 'advent_pro', sans-serif;
     overflow-x: hidden;
   }
 
