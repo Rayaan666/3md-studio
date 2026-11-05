@@ -153,7 +153,13 @@ export default function About({ setCursorState }) {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 pt-8 border-t border-black/15">
           {stats.map((stat, i) => (
             <div key={i} className="flex flex-col">
-              <span className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-black tracking-tight">
+              <span
+                className={`font-display font-black text-black tracking-tight ${
+                  stat.value.includes('0.5mm')
+                    ? 'text-2xl sm:text-4xl lg:text-5xl'
+                    : 'text-3xl sm:text-4xl lg:text-5xl'
+                }`}
+              >
                 {stat.value}
               </span>
               <span className="font-mono text-xs font-bold text-black uppercase tracking-wider mt-2 mb-1">

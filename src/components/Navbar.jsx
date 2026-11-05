@@ -14,11 +14,23 @@ export default function Navbar({ onStartProject }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const navLinks = [
-    { label: 'ABOUT', href: '#about' },
-    { label: 'SERVICES', href: '#services' },
-    { label: 'WORK', href: '#work' },
-    { label: 'CONTACT', href: '#contact' },
+    { num: '01', label: 'ABOUT', sub: 'Studio Philosophy & Craft', href: '#about' },
+    { num: '02', label: 'SERVICES', sub: 'CGI, 24fps Films & 360° Tours', href: '#services' },
+    { num: '03', label: 'WORK', sub: '45+ Landmark Visualizations', href: '#work' },
+    { num: '04', label: 'CONTACT', sub: 'Initiate a Project Transmission', href: '#contact' },
   ];
 
   const handleLinkClick = (e, href) => {
@@ -46,6 +58,7 @@ export default function Navbar({ onStartProject }) {
             className="group flex items-center gap-3.5 cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
+              setMobileMenuOpen(false);
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
@@ -69,7 +82,7 @@ export default function Navbar({ onStartProject }) {
             </div>
           </a>
 
-          {/* CENTER / RIGHT: Navigation Items */}
+          {/* DESKTOP: Center / Right Navigation Items */}
           <div className="hidden lg:flex items-center gap-8 xl:gap-10">
             {navLinks.map((item) => (
               <a
@@ -102,35 +115,39 @@ export default function Navbar({ onStartProject }) {
             </a>
           </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex items-center gap-3 lg:hidden">
-            <a
-              href="#contact"
-              onClick={(e) => handleLinkClick(e, '#contact')}
-              className="text-[11px] font-mono tracking-wider px-3 py-1.5 border border-white/20 text-white bg-white/5"
-            >
-              START ↗
-            </a>
+          {/* MOBILE: Creative Architectural Menu Capsule Trigger (No 'START' button) */}
+          <div className="flex items-center lg:hidden">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-white/90 hover:text-white focus:outline-none"
-              aria-label="Toggle navigation menu"
+              className="relative group flex items-center gap-2.5 px-3.5 py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white transition-all duration-300 hover:border-white/50 hover:bg-white/10 active:scale-95 shadow-lg"
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             >
-              <div className="w-6 h-4 flex flex-col justify-between">
+              <span className="font-mono text-[10px] tracking-widest uppercase font-bold text-white">
+                {mobileMenuOpen ? 'CLOSE' : 'MENU'}
+              </span>
+
+              {/* Architectural Morphing Geometry */}
+              <div className="relative w-4 h-3.5 flex flex-col justify-between items-end">
                 <span
-                  className={`w-full h-0.5 bg-white transition-transform duration-300 ${
-                    mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
+                  className={`h-[1.5px] bg-white transition-all duration-300 origin-center ${
+                    mobileMenuOpen
+                      ? 'w-4 rotate-45 translate-y-[6px]'
+                      : 'w-4'
                   }`}
                 />
                 <span
-                  className={`w-full h-0.5 bg-white transition-opacity duration-300 ${
-                    mobileMenuOpen ? 'opacity-0' : ''
+                  className={`h-[1.5px] bg-emerald-400 transition-all duration-300 ${
+                    mobileMenuOpen
+                      ? 'w-0 opacity-0'
+                      : 'w-2.5'
                   }`}
                 />
                 <span
-                  className={`w-full h-0.5 bg-white transition-transform duration-300 ${
-                    mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  className={`h-[1.5px] bg-white transition-all duration-300 origin-center ${
+                    mobileMenuOpen
+                      ? 'w-4 -rotate-45 -translate-y-[6px]'
+                      : 'w-3.5'
                   }`}
                 />
               </div>
@@ -139,38 +156,78 @@ export default function Navbar({ onStartProject }) {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* ── CREATIVE FULL-SCREEN ARCHITECTURAL MOBILE MENU ─────────── */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="lg:hidden fixed inset-x-0 top-[65px] bg-[#0c0c0c]/98 backdrop-blur-2xl border-b border-white/10 px-8 py-10 shadow-2xl z-30"
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:hidden fixed inset-0 z-30 bg-[#080808]/98 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-8 px-6 sm:px-10 overflow-y-auto"
           >
-            <div className="flex flex-col space-y-6">
-              {navLinks.map((item) => (
-                <a
+            {/* Background CAD grid */}
+            <div className="absolute inset-0 bg-cad-grid opacity-20 pointer-events-none" />
+
+            {/* Top Transmission Status Bar */}
+            <div className="relative z-10 flex items-center justify-between pb-4 border-b border-white/10 font-mono text-[10px] text-white/50 tracking-widest uppercase">
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>3MD STUDIO ARCHIVE</span>
+              </div>
+              <span className="text-white/70 font-semibold">DUBAI, UAE</span>
+            </div>
+
+            {/* Sculptural Menu Links */}
+            <div className="relative z-10 flex flex-col justify-center space-y-6 my-auto py-8">
+              {navLinks.map((item, idx) => (
+                <motion.a
                   key={item.label}
                   href={item.href}
                   onClick={(e) => handleLinkClick(e, item.href)}
-                  className="text-white text-xl font-display font-bold tracking-tight hover:text-white/60 transition-colors"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.06 * idx, duration: 0.35 }}
+                  className="group flex items-baseline justify-between border-b border-white/10 pb-4 text-white hover:text-emerald-300 transition-colors"
                 >
-                  <span>{item.label}</span>
-                </a>
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-mono text-xs text-white/40 group-hover:text-emerald-400 transition-colors">
+                      {item.num}
+                    </span>
+                    <div>
+                      <div className="font-display font-black text-2xl sm:text-3xl tracking-tight uppercase leading-none">
+                        {item.label}
+                      </div>
+                      <div className="font-mono text-[10px] text-white/40 tracking-wider uppercase mt-1">
+                        {item.sub}
+                      </div>
+                    </div>
+                  </div>
+
+                  <span className="font-mono text-xs text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all">
+                    ↗
+                  </span>
+                </motion.a>
               ))}
-              <div className="pt-6 border-t border-white/10 flex flex-col gap-4">
-                <a
-                  href="#contact"
-                  onClick={(e) => handleLinkClick(e, '#contact')}
-                  className="w-full text-center py-3 bg-white text-black font-mono text-xs tracking-widest uppercase font-semibold"
-                >
-                  START A PROJECT ↗
+            </div>
+
+            {/* Bottom Actions & Studio Details */}
+            <div className="relative z-10 pt-6 border-t border-white/10 flex flex-col gap-4">
+              <a
+                href="#contact"
+                onClick={(e) => handleLinkClick(e, '#contact')}
+                className="w-full py-4 text-center bg-white text-black font-mono text-xs tracking-widest uppercase font-bold hover:bg-neutral-200 transition-colors shadow-2xl rounded"
+              >
+                START A PROJECT ↗
+              </a>
+
+              <div className="flex items-center justify-between font-mono text-[10px] text-white/50 tracking-wider pt-1">
+                <a href="mailto:info@3mdstudio.net" className="hover:text-white transition-colors">
+                  info@3mdstudio.net
                 </a>
-                <div className="text-center font-mono text-[10px] text-white/40 tracking-widest">
-                  DUBAI, UAE · INFO@3MDSTUDIO.NET
-                </div>
+                <a href="tel:+971526384746" className="hover:text-white transition-colors">
+                  +971 52 638 4746
+                </a>
               </div>
             </div>
           </motion.div>

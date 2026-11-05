@@ -6,18 +6,6 @@ export default function Portfolio({ setCursorState }) {
   const [selectedProject, setSelectedProject] = useState(null);
 
   // ==========================================
-  // FEATURED PROJECT MOMENT (80% -> 100VW EXPANSION)
-  // ==========================================
-  const featuredContainerRef = useRef(null);
-  const { scrollYProgress: featuredProgress } = useScroll({
-    target: featuredContainerRef,
-    offset: ['start end', 'center center'],
-  });
-
-  const featuredWidth = useTransform(featuredProgress, [0, 1], ['80vw', '100vw']);
-  const featuredBorderRadius = useTransform(featuredProgress, [0, 1], ['16px', '0px']);
-
-  // ==========================================
   // CREATIVE BREAK (IMAGINED -> SEEN)
   // ==========================================
   const creativeBreakRef = useRef(null);
@@ -71,7 +59,7 @@ export default function Portfolio({ setCursorState }) {
       </div>
 
       {/* Clean, Curated Editorial Gallery Grid (Natural Aspect Ratios, Zero Cropping) */}
-      <div className="relative max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 mb-28 md:mb-40 z-10">
+      <div className="relative max-w-[1600px] mx-auto px-6 md:px-12 lg:px-20 mb-16 md:mb-24 z-10">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 lg:gap-8 [column-fill:_balance]">
           {projects.map((project) => {
             return (
@@ -108,63 +96,6 @@ export default function Portfolio({ setCursorState }) {
             );
           })}
         </div>
-      </div>
-
-      {/* ============================================================== */}
-      {/* FEATURED PROJECT MOMENT (80% -> 100VW EXPANSION ON SCROLL) */}
-      {/* ============================================================== */}
-      <div
-        ref={featuredContainerRef}
-        className="relative w-full min-h-[90vh] flex flex-col items-center justify-center overflow-hidden py-10 z-10"
-      >
-        <motion.div
-          style={{
-            width: featuredWidth,
-            borderRadius: featuredBorderRadius,
-          }}
-          className="relative h-[85vh] overflow-hidden shadow-2xl border-y border-black/15 mx-auto cursor-pointer group"
-          onClick={() => {
-            const sobhaProject = projects.find((p) => p.id === 8) || projects[0];
-            setSelectedProject(sobhaProject);
-          }}
-          onMouseEnter={() => setCursorState?.({ type: 'view' })}
-          onMouseLeave={() => setCursorState?.(null)}
-        >
-          <img
-            src="/images/featured-expand.webp"
-            alt="Sobha Beach Park Featured Architectural Visualization"
-            className="w-full h-full object-cover filter brightness-[0.88] contrast-[1.08] transition-transform duration-1000 group-hover:scale-105"
-            loading="lazy"
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-black/40 opacity-80" />
-
-          {/* Top Label */}
-          <div className="absolute top-8 left-8 md:left-14 flex items-center gap-3 z-10">
-            <span className="w-2.5 h-2.5 bg-white" />
-            <span className="font-mono text-xs md:text-sm font-semibold tracking-widest text-white uppercase bg-black/60 px-3 py-1.5 backdrop-blur-md border border-white/20">
-              SELECTED / 01 · FEATURED MONUMENT
-            </span>
-          </div>
-
-          <div className="absolute top-8 right-8 md:right-14 font-mono text-xs text-white/60 tracking-widest uppercase bg-black/60 px-3 py-1.5 backdrop-blur-md border border-white/10 hidden md:block">
-            PROGRESSIVE SCALE // 100VW DOCK
-          </div>
-
-          {/* Project Details on Scroll Image */}
-          <div className="absolute bottom-10 left-8 md:left-14 right-8 md:right-14 z-10">
-            <span className="font-mono text-xs text-white/60 tracking-widest uppercase block mb-2">
-              WATERFRONT REAL ESTATE CGI · UMM AL QUWAIN, UAE
-            </span>
-            <div className="font-display font-black text-4xl sm:text-6xl md:text-8xl lg:text-9xl tracking-tighter uppercase text-white leading-none">
-              SOBHA BEACH PARK.
-            </div>
-            <div className="flex items-center gap-4 mt-4 font-mono text-xs text-white/80">
-              <span>EXPLORE CASE STUDY</span>
-              <span className="group-hover:translate-x-1 transition-transform">↗</span>
-            </div>
-          </div>
-        </motion.div>
       </div>
 
       {/* ============================================================== */}
